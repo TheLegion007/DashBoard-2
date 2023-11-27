@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 
 const EditUser = () => {
   let history = useHistory();
@@ -24,12 +24,12 @@ const EditUser = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    await axios.put(`http://localhost:3003/users/${id}`, user);
+    await axios.put(`http://localhost:3030/users/${id}`, user);
     history.push("/");
   };
 
   const loadUser = async () => {
-    const result = await axios.get(`http://localhost:3003/users/${id}`);
+    const result = await axios.get(`http://localhost:3030/users/${id}`);
     setUser(result.data);
   };
   return (
@@ -87,7 +87,8 @@ const EditUser = () => {
               onChange={e => onInputChange(e)}
             />
           </div>
-          <button className="btn btn-warning btn-block">Update User</button>
+          <button className="btn btn-warning">Update User</button>
+          <Link className="btn btn-primary float-right" to="/"> Back to Home </Link>
         </form>
       </div>
     </div>

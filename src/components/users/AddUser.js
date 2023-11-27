@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios'
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const AddUser = () => {
   let history = useHistory();
@@ -20,7 +20,7 @@ const AddUser = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    await axios.post("http://localhost:3003/users", user);
+    await axios.post("http://localhost:3030/users", user);
     history.push("/");
   };
   return (
@@ -78,7 +78,8 @@ const AddUser = () => {
               onChange={e => onInputChange(e)}
             />
           </div>
-          <button className="btn btn-primary btn-block">Add TC</button>
+          <button className="btn btn-primary">Add TC</button>
+          <Link className="btn btn-primary float-right" to="/"> Back to Home </Link>
         </form>
       </div>
     </div>
